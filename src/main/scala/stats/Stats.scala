@@ -1,25 +1,23 @@
 package stats
 
-import org.apache.spark.SparkContext
 import org.apache.spark.sql.functions.{col, count}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
-
-
-class stats {
+class Stats {
 
 
   def flightsByMonth(flights: DataFrame, spark: SparkSession): DataFrame = {
 
     println("Calcuating the number of flights by month")
-    val flightMonthDf = flights.
-                          selectExpr("flightId", "month(date) as month").
-                          distinct()
+    val flightMonthDf = flights
+                          .selectExpr("flightId", "month(date) as month")
+                          .distinct()
 
-    flightMonthDf.
-      groupBy("month").
-      count().
-      orderBy("month")
+    flightMonthDf
+      .groupBy("month")
+      .count()
+      .orderBy("month")
+      .selectExpr("month as Month","count AS NumberOfFlights")
 
 
   }
@@ -28,16 +26,17 @@ class stats {
     println("Calcuating the number of flights by passenger")
     flights.createOrReplaceTempView("flights_tbl")
 
-    val numberOfFlights = flights.
-      selectExpr("flightId", "passengerId AS passenger").
-      groupBy("passenger").
-      count()
+    val numberOfFlights = flights
+                            .selectExpr("flightId", "passengerId AS passenger")
+                            .groupBy("passenger")
+                            .count()
 
-    numberOfFlights.
-      orderBy(col("count").desc).
-      limit(100).
-      join(passengers, numberOfFlights("passenger") === passengers("passengerId")).
-      select("passengerId", "count", "firstName", "lastName")
+    numberOfFlights
+      .orderBy(col("count").desc)
+      .limit(100)
+      .join(passengers, numberOfFlights("passenger") === passengers("passengerId"))
+      .selectExpr("passengerId AS PassengerID", "count as NumberOfFlights", "firstName", "lastName")
+      .orderBy(col("NumberOfFlights").desc)
 
   }
 
@@ -58,23 +57,22 @@ class stats {
 
   def passengersFlightsTogether(flights: DataFrame, spark: SparkSession): DataFrame = {
 
-    val flightsTogether = flights.as("flights1").
-      join(
+    val flightsTogether = flights.as("flights1")
+      .join(
         flights.as("flights2"),
         col("flights1.flightId") === col("flights2.flightId") &&
         col("flights1.date") === col("flights2.date") &&
         col("flights1.passengerId") > col("flights2.passengerId"),
         "inner"
-      ).
-      groupBy(col("flights1.passengerId"), col("flights2.passengerId")).
-      agg(count(col("*")).as("flightsTogether"))
+      )
+      .groupBy(col("flights1.passengerId"), col("flights2.passengerId"))
+      .agg(count(col("*")).as("flightsTogether"))
 
 
-    flightsTogether.
-      select("flights1.passengerId", "flights2.passengerId", "flightsTogether").
-      withColumnRenamed("flights1.passengerId", "passenger1").
-      withColumnRenamed("flights2.passengerId", "passenger2").
-      filter(col("flightsTogether") >= 3).orderBy(col("flightsTogether").desc)
+    flightsTogether
+      .selectExpr("flights1.passengerId AS passenger1", "flights2.passengerId AS passenger2", "flightsTogether")
+      .filter(col("flightsTogether") >= 3)
+      .orderBy(col("flightsTogether").desc)
   }
 
 }

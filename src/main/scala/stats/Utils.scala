@@ -2,7 +2,7 @@ package stats
 
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
-class utils {
+class Utils {
 
   def readCsvFile(inputPath: String, spark: SparkSession): DataFrame = {
     println("Reading file in the patch %s", inputPath)
