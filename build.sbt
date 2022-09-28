@@ -1,8 +1,10 @@
-ThisBuild / version := "0.1.0-SNAPSHOT"
+name := "flight-stats"
 
-ThisBuild / scalaVersion := "3.2.0"
+version := "1.0"
 
-lazy val root = (project in file("."))
-  .settings(
-    name := "flight-stats"
-  )
+scalaVersion := "2.13.0"
+
+libraryDependencies ++= Seq(
+  "org.apache.spark" %% "spark-core" % "3.2.0",
+  "org.apache.spark" %% "spark-sql" % "3.2.0"
+)

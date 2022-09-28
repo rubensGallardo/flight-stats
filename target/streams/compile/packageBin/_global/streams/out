@@ -1,0 +1,17 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\ruben\workspace\scala\flight-stats\target\scala-2.13\flight-stats_2.13-1.0.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	flightData.csv[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ruben\workspace\scala\flight-stats\target\scala-2.13\classes\flightData.csv[0m
+[0m[[0m[0mdebug[0m] [0m[0m	MyFirstScala$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ruben\workspace\scala\flight-stats\target\scala-2.13\classes\MyFirstScala$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	MyFirstScala.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ruben\workspace\scala\flight-stats\target\scala-2.13\classes\MyFirstScala.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	passengers.csv[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ruben\workspace\scala\flight-stats\target\scala-2.13\classes\passengers.csv[0m
+[0m[[0m[0mdebug[0m] [0m[0m	stats[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ruben\workspace\scala\flight-stats\target\scala-2.13\classes\stats[0m
+[0m[[0m[0mdebug[0m] [0m[0m	stats\stats.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ruben\workspace\scala\flight-stats\target\scala-2.13\classes\stats\stats.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	stats\utils.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\ruben\workspace\scala\flight-stats\target\scala-2.13\classes\stats\utils.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
