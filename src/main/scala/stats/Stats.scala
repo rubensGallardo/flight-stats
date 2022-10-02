@@ -130,7 +130,7 @@ class Stats {
         .groupBy("passengerId")
         .agg(max("run")
           .as("longest_run"))
-      .orderBy("passengerId")
+      .orderBy(col("longest_run").desc)
 
   }
 
@@ -171,8 +171,8 @@ class Stats {
     println("Result with passengers and the number of flights together higher or equal than 3")
     flightsTogether
       .selectExpr("flights1.passengerId AS passenger1", "flights2.passengerId AS passenger2", "flightsTogether")
-      .filter(col("flightsTogether") >= 3)
-      .orderBy(col("flightsTogether").desc)
+      .filter(col("flightsTogether") > 3)
+      .orderBy(col("flightsTogether").desc, col("passenger1").desc)
   }
 
 }

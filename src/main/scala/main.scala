@@ -12,7 +12,6 @@ object MyFirstScala {
     getOrCreate()
 
   def main(args: Array[String]):Unit = {
-
     val statistics = new Stats()
     val utils = new Utils()
     val path = "src/main/result/"
@@ -42,14 +41,14 @@ object MyFirstScala {
     println("Exercise #3 - Calculate the longest run by passenger")
     //val longestRunDf =
       statistics.getLongestRunByPassenger(flightData, spark)
-        .show(100)
+        .show()
     //utils.writeCsvFile(path + "3-longestRun", longestRunDf, spark )
 
 
     println("Exercise #4 - Calculate passengers in more than 3 flights together")
     //val flightsTogetherDf =
-      statistics.passengersFlightsTogether(flightData, spark)
-        .show()
+    statistics.passengersFlightsTogether(flightData, spark)
+      .show()
     //utils.writeCsvFile(path + "4-flightsTogether", flightsTogetherDf, spark )
 
   spark.stop()

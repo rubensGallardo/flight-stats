@@ -16,7 +16,7 @@ class Utils {
     csvDf
       .coalesce(1)
       .write
-      .format("com.databricks.spark.csv")
+      .format("csv")
       .mode("overwrite")
       .save(path)
 
