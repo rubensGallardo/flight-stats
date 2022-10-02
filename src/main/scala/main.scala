@@ -24,6 +24,7 @@ object MyFirstScala {
     // this is because I tried to store the files locally
     // I don't know if this is something connected to the IDE or some versions of sbt, spark and scala
     // to provide you with a solution, I commented them and at least you can see the table printed
+
     println("Exercise #1 - Calculate the number of flights by month")
     //val flightsByMonthDf =
     statistics.flightsByMonth(flightData, spark)

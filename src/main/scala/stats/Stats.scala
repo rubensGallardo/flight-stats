@@ -35,7 +35,8 @@ class Stats {
 
 
   }
-  // This function will provide the solution for the Exercise number 2
+
+
   def flightsByPassenger(flights: DataFrame, passengers: DataFrame, spark: SparkSession): DataFrame= {
     /**
      *  This function will provide the solution for the Exercise number 2
@@ -60,9 +61,6 @@ class Stats {
                             .count()
 
     // The result will be returned after joining flights and passengers DataFrames
-    // using passengerId to join both
-    // As the exercise adds the limit of records will be 100 after ordering the result from the higher number
-    // to the lower number of flights.
     numberOfFlights
       .orderBy(col("count").desc)
       .limit(100)
@@ -99,8 +97,7 @@ class Stats {
           .over(w))
 
     println("Calculating the number of steps in every route and getting the max number of steps by passenger")
-    // Creating a Dataframe as result of doing GROUP BY by passengerId and routeId
-    // getting all different options by passengers
+    // Getting every different option by passengers
     // after adding a column with the result of adding every different country in every route
     // Finally the result generate the max number of the field run (number of countries in a route)
 
